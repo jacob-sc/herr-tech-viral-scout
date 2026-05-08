@@ -196,9 +196,11 @@ export default function HomePage() {
         </div>
       )}
 
-      <footer className="mt-auto pt-16 text-xs text-muted-light">
-        viral-scout · mvp{result.mock && " · mock mode"}
-      </footer>
+      {result.mock && (
+        <div className="mt-8 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 text-xs font-medium">
+          MOCK MODE — keine API-Keys gesetzt, Dummy-Daten
+        </div>
+      )}
     </main>
   );
 }

@@ -154,3 +154,35 @@ Falls der User später feintunen will, sind die Hebel in `app/api/scout/route.ts
 - Search-Budgets (Pool-Größe pro Quelle) — mehr Videos, mehr Kosten
 
 Bei jeder Änderung dem User die Konsequenz erklären (Kosten, Qualität).
+
+---
+
+## 🎨 Branding-Frage — am Ende des Setups stellen
+
+**Wichtig: Sobald der erste Scout durchgelaufen ist, frag aktiv:**
+
+> *„Das Tool hat aktuell Herr-Tech-Branding im UI:
+> - Logo oben links + ‚/ viral-scout' Subtext
+> - Footer: ‚© herr.tech · Viral Scout · Built with Herr Tech Starter Tools'
+> - Lavendel-Akzent (`#B598E2`) für Buttons und Highlights
+>
+> Willst du das so behalten oder dein eigenes Branding einbauen?"*
+
+### Wenn der User Branding ändern will
+
+Frag nach:
+- **Brand-Name** (für Top-Bar-Text + Footer)
+- **Primärfarbe** als Hex
+- **Logo-Datei** (PNG/SVG, transparenter Hintergrund, Höhe ~36px gut)
+- **Domain** für Footer (z.B. `frau.tech`)
+
+### Was du touchen musst
+
+- **`public/herr-tech-logo.png`** → durch User-Logo ersetzen
+- **`app/layout.tsx`** → Top-Bar-Text, Footer-Text, Metadata-Titel
+- **`app/globals.css`** → Design-Tokens für `--primary` (aktuell `#B598E2`) und ggf. weitere Farben
+- **`app/page.tsx`** → wenn der User auch Hero-Headline „KI-Viralität, weltweit entdeckt" umschreiben will
+
+### Standard-Default behalten
+
+Wenn der User „passt schon" sagt: nichts ändern. Branding ist dezent.
