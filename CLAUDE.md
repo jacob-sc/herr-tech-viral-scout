@@ -111,7 +111,7 @@ npm run dev:lan
 ```
 
 > **Warum `dev:lan` und nicht `dev`?**
-> Es gibt einen Bug in Claude Code Desktop, der die `ANTHROPIC_API_KEY`-Env-Variable in der Shell überschreibt (auf leer setzt). Das `dev:lan` Script macht vorher ein `unset`, dadurch greift `.env.local`. Wenn der User das nicht beachtet, sieht er gelbe „MOCK"-Badges im UI.
+> Beide funktionieren — der einzige Unterschied ist der Port: `dev:lan` läuft auf **3002** (damit's nicht mit Karussell/Video-Generator auf 3000 kollidiert) und bindet zusätzlich auf `0.0.0.0`, damit du den Server vom Handy im selben WLAN testen kannst. Beide Skripte laden `.env.local` mit Override über `scripts/dev.js` — d.h. eine leere `ANTHROPIC_API_KEY` aus der Shell (Claude Code Desktop setzt die) wird automatisch ignoriert.
 
 Sag: *„Dev-Server läuft jetzt. Öffne im Browser: http://localhost:3002"*
 
@@ -137,7 +137,7 @@ Glückwunsch sagen. Hinweise geben:
 
 | Symptom | Ursache | Fix |
 |---|---|---|
-| Gelbe „MOCK"-Badges trotz Keys | Shell-Override-Bug | `npm run dev:lan` (nicht `dev`) |
+| Gelbe „MOCK"-Badges trotz Keys | `.env.local` fehlt oder Key leer | `cat .env.local` checken — Schlüssel müssen gesetzt sein. Shell-Override (Claude Code Desktop setzt `ANTHROPIC_API_KEY=`) wird seit dem `scripts/dev.js`-Wrapper automatisch ignoriert |
 | `NODE_MODULE_VERSION 115/127 mismatch` | better-sqlite3 für falsche Node-Version | `npm install better-sqlite3 --build-from-source` |
 | Stream lädt ewig | Browser-Buffering | Console im DevTools öffnen, prüfen ob `text/event-stream` ankommt |
 | 0 Treffer | Match-Filter zu streng oder Apify-Budget alle | Filter lockern (`MIN_MATCH_SCORE` runter) oder Apify-Billing prüfen |

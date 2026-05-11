@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "dev:lan": "unset ANTHROPIC_API_KEY ANTHROPIC_BASE_URL; next dev --hostname 0.0.0.0 --port 3002",
+    "dev": "node scripts/dev.js",
+    "dev:lan": "node scripts/dev.js --hostname 0.0.0.0 --port 3002",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
